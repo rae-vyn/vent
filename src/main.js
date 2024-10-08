@@ -73,11 +73,17 @@ async function refreshChart() {
       date: entry[1].date,
       score: entry[1].scores.compound,
       pureTime: entry[1].pureTime,
+      id: entry[0],
     };
   });
   chart.data.datasets[0].data = stripped_entries
     .map((entry) => {
-      return { pt: entry.pureTime, score: entry.score, date: entry.date };
+      return {
+        pt: entry.pureTime,
+        score: entry.score,
+        date: entry.date,
+        id: entry.id,
+      };
     })
     .sort((l, r) => {
       if (l.pt < r.pt) {
@@ -88,7 +94,9 @@ async function refreshChart() {
         return 0;
       }
     });
-  chart.data.labels = chart.data.datasets[0].data.map((entry) => entry.date);
+  chart.data.labels = chart.data.datasets[0].data.map(
+    (entry) => `${entry.date} - ID: ${entry.id}`
+  );
   chart.data.datasets[0].data = chart.data.datasets[0].data.map(
     (entry) => entry.score
   );
