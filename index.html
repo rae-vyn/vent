@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/output.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vent</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+
+  <body class="font-mono p-10">
+    <div class="items-center text-center flex-col space-y-5 self-center">
+      <div id="main">
+        <h1 class="font-black text-5xl">vent</h1>
+
+        <p>how are you feeling?</p>
+
+        <form class="column space-y-5" id="vent-form">
+          <textarea
+            id="vent-input"
+            placeholder="talk about it"
+            rows="15"
+            cols="50"
+            maxlength="2000"
+          ></textarea>
+          <div class="flex-row">
+            <button type="submit">Submit</button>
+            <button id="recover" type="button">Recover Previous</button>
+            <button id="list" type="button">List Previous IDs</button>
+            <button class="chart" type="button">Show Chart</button>
+          </div>
+        </form>
+        <form id="recover-form" class="flex-row hidden my-4" autocomplete="off">
+          <input
+            class="mr-y-10"
+            type="text"
+            id="recover-input"
+            placeholder="enter id..."
+          />
+          <button type="submit">Find</button>
+        </form>
+      </div>
+      <div
+        id="mood_container"
+        hidden
+        class="items-center text-center flex-col space-y-5"
+      >
+        <canvas id="mood_chart"></canvas
+        ><button class="chart" type="button">Hide Chart</button>
+        <button id="clear" type="button">Clear Notes</button>
+        <button id="export" type="button">Export All Notes</button>
+      </div>
+    </div>
+  </body>
+</html>

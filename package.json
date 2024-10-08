@@ -1,0 +1,30 @@
+{
+  "name": "vent",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@rollup/plugin-inject": "^5.0.5",
+    "@types/jquery": "^3.5.31",
+    "eslint": "^9.12.0",
+    "globals": "^15.10.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.8"
+  },
+  "dependencies": {
+    "@tauri-apps/plugin-dialog": "^2.0.0",
+    "@tauri-apps/plugin-fs": "^2.0.0",
+    "@tauri-apps/plugin-notification": "^2.0.0",
+    "@tauri-apps/plugin-shell": "^2.0.0",
+    "@tauri-apps/plugin-store": "^2.0.0",
+    "chart.js": "^4.4.4",
+    "jquery": "^3.7.1",
+    "luxon": "^3.5.0"
+  }
+}
