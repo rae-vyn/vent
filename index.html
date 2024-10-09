@@ -45,8 +45,20 @@
         hidden
         class="items-center text-center flex-col space-y-5"
       >
-        <canvas id="mood_chart"></canvas
-        ><button class="chart" type="button">Hide Chart</button>
+        <canvas id="mood_chart"></canvas>
+        <p>
+          Your mood rating is a number from -1 to 1, <br />
+          representing how positive (towards 1) or negative (towards -1) your
+          note is. <br />
+          For more info,
+          <a
+            href="https://vadersentiment.readthedocs.io/en/latest/pages/about_the_scoring.html"
+            target="_blank"
+            class="underline text-white"
+            >click here</a
+          >.
+        </p>
+        <button class="chart" type="button">Hide Chart</button>
         <button id="clear" type="button">Clear Notes</button>
         <button id="export" type="button">Export All Notes</button>
       </div>

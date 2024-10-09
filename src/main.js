@@ -54,6 +54,13 @@ let chart = new Chart(document.getElementById("mood_chart"), {
         text: "Mood Rating Over Time",
       },
     },
+    scales: {
+      y: {
+        title: {
+          text: "Mood Score",
+        },
+      },
+    },
     responsive: true,
   },
   plugins: [plugin],
@@ -159,6 +166,8 @@ async function clear() {
     await store.clear();
   }
   await refreshChart();
+  $("#mood_container").toggle();
+  $("#main").toggle();
 }
 
 async function store_as_csv() {
