@@ -131,9 +131,10 @@ async function submit(data) {
 async function query(request) {
   let res = await store.get(request);
   if (res) {
-    await message(res.text);
+    return res.text;
   } else {
     await message("Note not found.");
+    return null;
   }
 }
 
@@ -190,9 +191,18 @@ $(() => {
     $("#vent-input").val("");
     await refreshChart();
   });
-  $("#recover-form").on("submit", (e) => {
+  $("#recover-form").on("submit", async (e) => {
     e.preventDefault();
-    query($("#recover-input").val());
+    let id = $("#recover-input").val();
+    let res = await query(id);
+    if (res) {
+      $("#id-container").text(id);
+      $("#note-contents-container").text(res);
+      $("#recover-container").toggle();
+      $("#main").toggle();
+    } else {
+      alert("uh oh!");
+    }
   });
   $("#recover").on("click", (_) => {
     $("#recover-form").toggle();
@@ -208,6 +218,10 @@ $(() => {
       return;
     }
     $("#mood_container").toggle();
+    $("#main").toggle();
+  });
+  $(".recover").on("click", (_) => {
+    $("#recover-container").toggle();
     $("#main").toggle();
   });
   $("#export").on("click", async (_) => {
