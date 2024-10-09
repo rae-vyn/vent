@@ -3,6 +3,7 @@
 
 use std::collections::HashMap;
 use vader_sentiment::SentimentIntensityAnalyzer as SIA;
+use tauri::Manager;
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn analyze(input: &str) -> HashMap<String, f64> {
@@ -13,7 +14,13 @@ fn analyze(input: &str) -> HashMap<String, f64> {
         .collect()
 }
 fn main() {
+    #[cfg(desktop)]
     tauri::Builder::default()
+        .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
+            let _ = app.get_webview_window("main")
+                       .expect("no main window")
+                       .set_focus();
+        }))
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_store::Builder::new().build())
